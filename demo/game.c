@@ -28,8 +28,7 @@ struct state
 
 void init_grid()
 {
-    draw_color((rgb_color_t){22, 22, 22});
-
+    // draw_color((rgb_color_t){22, 22, 22});
     draw_color((rgb_color_t){210, 210, 210});
 
     for (int x = 0; x < window_width; x += grid_cell_size)
@@ -68,13 +67,7 @@ state_t *emscripten_init()
 bool emscripten_main(state_t *state)
 {
     sdl_clear();
-    // if (state->page == 0)
-    // {
-    // draw_maze();
     init_grid();
-
-    // build_landing_p2age();
-    // }
     sdl_show();
     return false;
 }
