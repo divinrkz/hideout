@@ -22,6 +22,7 @@ struct state
 {
     scene_t *scene;
     size_t page;
+    bool maze_generated;
 };
 
 state_t *emscripten_init()
@@ -30,31 +31,28 @@ state_t *emscripten_init()
     sdl_init(SDL_MIN, SDL_MAX);
     state_t *state = malloc(sizeof(state_t));
     state->scene = scene_init();
-    // build_landing_page();
+    state->maze_generated = false;
 
     state->page = 1;
-    // sdl_show();
-
-    // init_grid();
-    // sdl_show();
 
     return state;
 }
 
 bool emscripten_main(state_t *state)
 {
-    sdl_clear();
+
     if (state->page == 0)
     {
         build_landing_page();
     }
     else if (state->page == 1)
     {
-        init_grid();
-        generate_maze();
+        if (!state->maze_generated)
+        {
+            state->maze_generated = generate_maze(state);
+        }
+        sdl_show();
     }
-
-    sdl_show();
 
     return false;
 }
