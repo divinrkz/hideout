@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "landing_page.h": "c",
-        "sound_effect.h": "c",
-        "sdl_wrapper.h": "c"
-    }
-}
